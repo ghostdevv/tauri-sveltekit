@@ -51,7 +51,7 @@ Most of the questions you can answer how you want, here are the questions that n
 
 | Question                                                                                                                               | Answer                |
 |----------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Where are your web assets (HTML/CSS/JS) located, relative to the "<current dir>/src-tauri/tauri.conf.json" file that will be created?  | ../static             |
+| Where are your web assets (HTML/CSS/JS) located, relative to the "<current dir>/src-tauri/tauri.conf.json" file that will be created?  | ../build             |
 | What is the url of your dev server?                                                                                                    | http://localhost:3000 |
 
 4. Update our tauri config
@@ -68,20 +68,24 @@ In `src-tauri/tauri.conf.json` you need to update the `beforeDevCommand` and `be
 5. Now we need to switch to the static adaper
 
 ```bash
-npm i @sveltejs/adapter-static -D
+npm i @sveltejs/adapter-static@next -D
 npm remove @sveltejs/adapter-auto
 ```
 
 Edit your `svelte.config.js` file to use the newly installed adapter, for example:
 
 ```js
-import static from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-static';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	kit: {
-		adapter: static()
-	}
+    kit: {
+        adapter: adapter({
+            fallback: 'index.html',
+            assets: 'build',
+			pages: 'build',
+        }),
+    },
 };
 
 export default config;
