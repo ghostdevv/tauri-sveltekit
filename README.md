@@ -17,11 +17,17 @@ rm .git -r
 Build:
 
 ```
-npm run tauri build
+npm run build
 ```
 
 Dev:
 
 ```
-npm run tauri dev
+npm run dev
+```
+
+Tauri Commands:
+
+```
+npm run tauri help
 ```
