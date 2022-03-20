@@ -6,8 +6,8 @@
   "build": {
     "distDir": "../build",
     "devPath": "http://localhost:3000",
-    "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": "npm run build"
+    "beforeDevCommand": "svelte-kit dev",
+    "beforeBuildCommand": "svelte-kit build"
   },
   "tauri": {
     "bundle": {
